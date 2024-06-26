@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -11,7 +12,21 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        /*
+        $customers = Customer::all();
+        return response()->json([
+            'status' => true,
+            'message' => 'Customers retrieved successfully',
+            'data' => $customers
+        ], 200);
+        */
+        $post = Post::find(1);
+        $comments = $post->comments;
+        return response()->json([
+            'status' => true,
+            'message' => 'Comments of a Post',
+            'data' => $comments
+        ], 200);
     }
 
     /**
